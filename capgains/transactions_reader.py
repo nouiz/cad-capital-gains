@@ -62,6 +62,8 @@ class TransactionsReader:
                         raise ClickException(
                             "The quantity entered {} is not a valid number"
                             .format(qty_str))
+                    if entry[qty_idx] < 0:
+                        ClickException('Quantity is less then 0: {}'.format(entry[qty_idx]))
                     price_idx = cls.columns.index("price")
                     price_str = entry[price_idx]
                     try:
