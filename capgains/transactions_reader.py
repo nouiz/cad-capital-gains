@@ -84,7 +84,9 @@ class TransactionsReader:
                     if last_date:
                         if transaction.date < last_date:
                             raise ClickException(
-                                "Transactions were not entered in chronological order")  # noqa: E501
+                                "Transactions were not entered in chronological"
+                                " order. Do you want to use the --reverse option:"
+                                " {} {}".format(transaction.date, last_date))  # noqa: E501
                     last_date = transaction.date
                     transactions.append(transaction)
             return Transactions(transactions)
