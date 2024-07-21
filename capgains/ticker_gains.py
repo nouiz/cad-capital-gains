@@ -16,6 +16,7 @@ class TickerGains:
             t.exchange_rate = rate
             self._add_transaction(t)
             if self._is_superficial_loss(t, transactions):
+                print("Superficial loss on {}".format(t.date))
                 self._total_acb -= t.capital_gain
                 t.set_superficial_loss()
 
