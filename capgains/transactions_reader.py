@@ -34,6 +34,9 @@ class TransactionsReader:
                     reader = list(reader)
                     reader.reverse()
                 for entry_no, entry in enumerate(reader):
+                    # Skip lines that start with #, they are comments.
+                    if len(entry) > 0 and entry[0].startswith("#"):
+                        continue
                     actual_num_columns = len(entry)
                     expected_num_columns = len(cls.columns)
                     if actual_num_columns != expected_num_columns:
